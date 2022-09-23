@@ -23,14 +23,10 @@ int check_scale(int n)
 
 int main()
 { 
-    int num = 0;
     int self_number[10001] = {};
-    for(int i = 1; num < 10001; i++)
-    {
-        num = i + check_scale(i);
-        self_number[num] = 1;
-    }
-    for(int i = 1; i < 10001; i++)
+    for(int i = 1; i + check_scale(i) < 10001; i++)
+        self_number[i + check_scale(i)] = 1;
+    for(int i = 1; i < 9994; i++)
     {
         if (self_number[i] == 0)
             cout << i << '\n';
